@@ -57,7 +57,7 @@ p_h2 = soup.select("h2 ~ p")
 print(p_h2)
 
 print(soup.body.prettify())
-bold = soup.select("p#paragraph-id b")
+bold = soup.select("p#paragraph-id b") # dengan attribute
 print(bold,'\n')
 
 # nested calls

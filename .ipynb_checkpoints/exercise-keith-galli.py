@@ -7,40 +7,42 @@ file = requests.get("https://keithgalli.github.io/web-scraping/webpage.html")
 soup = bs(file.content,'lxml')
 # print(soup.prettify())
 
-# # cara sendiri
-# li = soup.find_all("li", attrs={"class" : re.compile("social.+")})
-# hasil = []
-# # print(li)
-# for line in li:
-#     hasil.append(line.a['href'])
-# print("cara sendiri : ",hasil)
-#
+print("\n# Exercise 1")
+# cara sendiri
+li = soup.find_all("li", attrs={"class" : re.compile("social.+")})
+hasil = []
+# print(li)
+for line in li:
+    hasil.append(line.a['href'])
+print("cara sendiri : ",hasil)
+
 
 # cara 1
-# link = soup.select("ul.socials a")
-# hasil_link = [link["href"] for link in link]
-# print("solisi 1 :",hasil_link)
+link = soup.select("ul.socials a")
+hasil_link = [link["href"] for link in link]
+print("solisi 1 :",hasil_link)
 
 # cara 2
-# ulist = soup.find("ul", attrs={"class" : "socials"} )
-# links = ulist.find_all("a")
-# print(links)
-# list_link = [item['href'] for item in links]
-# print(list_link)
+ulist = soup.find("ul", attrs={"class" : "socials"} )
+links = ulist.find_all("a")
+print(links)
+list_link = [item['href'] for item in links]
+print(list_link)
 
 # cara 3
-# link = soup.select("li.social a")
-# print(link)
-# list_link = [item['href'] for item in link]
-# print(list_link)
+link = soup.select("li.social a")
+print(link)
+list_link = [item['href'] for item in link]
+print(list_link)
 
 
+print("\n# Exercise 2")
 # Exercise 2
 # cara sendiri
-# table = soup.select("table.hockey-stats thead")[0]
-# kolom = soup.find_all("th")
-# list_kolom = [kol.string for kol in kolom]
-# print(list_kolom)
+table = soup.select("table.hockey-stats thead")[0]
+kolom = soup.find_all("th")
+list_kolom = [kol.string for kol in kolom]
+print(list_kolom)
 
 
 
@@ -69,3 +71,20 @@ print(df.loc[df["Team"] != "Did not play"], '\n')
 # print(df.loc[df["Team"] != "Did not play"].sum())
 
 print(df['GP']) # Ini ada 2 kolom
+
+
+# Exercise 3
+print("\n# Exercise 3")
+# ambil semua fun fact yang menggunakan kata 'is'
+ulist = soup.select("ul.fun-facts")[0]
+list = ulist.find_all("li", string=re.compile("is"))
+print(list)
+
+
+
+ulist = soup.select("ul.fun-facts li")
+print(ulist)
+fact_list = [item.find(string=re.compile("is")) for item in ulist]
+print(fact_list)
+fact_list = [item.find_parent().get_text() for item in fact_list if item] #meghilangkan data yang None dan mengeluarkan dara dalam <i>..</i>
+print(fact_list)
