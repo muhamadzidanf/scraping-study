@@ -91,15 +91,34 @@ soup = bs(file.content,'lxml')
 # print(fact_list)
 
 
-# exercise 4
-# ambil foto
-div_photo = soup.select("div.row div.column img")
-full_link = url+div_photo[0]['src']
-# print(full_link)
+# # exercise 4
+# # ambil foto
+# div_photo = soup.select("div.row div.column img")
+# full_link = url+div_photo[0]['src']
+# # print(full_link)
+#
+# img_data = requests.get(full_link).content        # https://stackoverflow.com/questions/30229231/python-save-image-from-url
+# with open('lame_como.jpg', 'wb') as handler:
+#     handler.write(img_data)
+#
+# # list_link_photo = [item['src'] for item in div_photo]
+# # print(list_link_photo)
 
-img_data = requests.get(full_link).content
-with open('lame_como.jpg', 'wb') as handler:
-    handler.write(img_data)
+# exercise 5
+# Mysteri challenge
+print("\nExercise 5")
+p = soup.select("div.block a")
+list_file = [item['href'] for item in p]
+print(list_file)
 
-# list_link_photo = [item['src'] for item in div_photo]
-# print(list_link_photo)
+for item in list_file:
+    full_link = url+item
+    # print(full_link)
+    page = requests.get(full_link)
+    soup = bs(page.content,'lxml')
+    kata = soup.select("p#secret-word")[0].string
+    print(kata)
+    # kata = soup.find("p", attrs={"id":"secret-word"})
+    # print(type(kata1))
+    # print(type(kata))
+    # break
