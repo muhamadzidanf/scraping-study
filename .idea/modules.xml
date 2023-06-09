@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/PycharmProjects/py_requests/.idea/py_requests.iml" filepath="$USER_HOME$/PycharmProjects/py_requests/.idea/py_requests.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/scraping-study.iml" filepath="$PROJECT_DIR$/.idea/scraping-study.iml" />
     </modules>
   </component>
