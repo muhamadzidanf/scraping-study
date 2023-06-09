@@ -61,28 +61,22 @@ def get_list_result(row_data):
         return [item.get_text() for item in row_data.find_all("li")]
         # return "yes ada listnya "
     else:
-        return row_data.find("td").get_text()
+        return row_data.find("td").get_text(" ", strip=True)
 
 
 dict_info = {}
 for index, item in enumerate(info_baris):
     # print(index,item.find("th").get_text())
     if index == 0:
-        dict_info['judul'] = item.find("th").get_text()
+        dict_info['judul'] = item.find("th").get_text(" ", strip=True)
     elif index == 1:
         continue
     else:
-        key_dict = item.find("th").get_text()
+        key_dict = item.find("th").get_text(" ", strip=True)
         value_dict = get_list_result(item)
         # print(value_dict)
         dict_info[key_dict] = value_dict
-print(type(dict_info))
-
-
-
-
-
-
+print(dict_info)
 
 
 # print(dict_info)
