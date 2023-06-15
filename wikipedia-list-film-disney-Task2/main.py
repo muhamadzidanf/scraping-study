@@ -3,6 +3,9 @@ from requests.exceptions import HTTPError
 from bs4 import BeautifulSoup as bs
 import re
 
+# note
+# COBA SENDIRI DULU BARU LIHAT TUTOR
+
 url = "https://en.wikipedia.org"
 wiki_url = "/wiki/List_of_Walt_Disney_Pictures_films"
 try:
@@ -28,7 +31,7 @@ def get_list_result(row_data):
         # return "yes ada listnya "
     else:
         # return row_data.find("td").get_text(" ", strip=True)
-        try: # disini pake try karena ada beberapa link yang didalamnya tidak ada data nya
+        try: # disini pake try karena ada beberapa link yang mengembalikan nilai nonetype
             data = row_data.find("td").get_text(" ", strip=True)
             return data
         except:
